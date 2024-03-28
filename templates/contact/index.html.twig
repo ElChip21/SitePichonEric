@@ -1,20 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactController!{% endblock %}
+{% block title %}Hello ContactController!
+{% endblock %}
+
+{% form_theme contactForm 'bootstrap_5_layout.html.twig' %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	{# interpollation - traduire la valeur d'une variable dans une vue #}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	{# je récupère en session les messages flash si j'en ai et j'itère à l'intérieur #}
+		<div class="row justify-content-center"> <div class="row col-md-8">
+			{% for message in app.flashes('success') %}
+				<div class="alert alert-success">
+					{{ message }}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/laragon/www/Titre_pro_site_Eric_Pichon/titre_pro_afpa/src/Controller/ContactController.php</code></li>
-        <li>Your template at <code>C:/laragon/www/Titre_pro_site_Eric_Pichon/titre_pro_afpa/templates/contact/index.html.twig</code></li>
-    </ul>
-</div>
+	{# afficher les erreurs du formulaire #}
+
+	<div class="row justify-content-center">
+		<div class="row col-md-8">
+            {# désactiver les validations html5 par défaut #}
+			{{ form_start(contactForm, { 'attr': {'class': 'row', 'novalidate': 'novalidate'} }) }}
+
+            {# {{dump(form_errors(contactForm.firstName))}} #}
+            
+            {# {% if errors is not null  %}
+                {% for error in errors %}
+                    <div class="alert alert-warning">
+                        {{error.message}}
+                    </div>
+                {% endfor %}
+            {% endif %} #}
+
+
+            {# {% if errors is not null  %}
+                {% for error in errors %}
+                    <div class="alert alert-warning">
+                        {{error.message}}
+                    </div>
+                {% endfor %}
+            {% endif %} #}
+
+			{{ form_end(contactForm) }}
+
+		</div>
+	</div>
+
+
 {% endblock %}

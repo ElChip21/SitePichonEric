@@ -14,6 +14,18 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+        {# avoir ma nav sur toutes mes pages #}
+        {% include "nav.html.twig" %}
+
+        <div class="container-fluid pt-5 ">
+            {% include "flash.html.twig" %} {# Placé en dehors du bloc body #}
+
+            {% block body %}
+                {# Contenu spécifique à chaque page #}
+            {% endblock %}
+        </div>
+
     </body>
+
 </html>

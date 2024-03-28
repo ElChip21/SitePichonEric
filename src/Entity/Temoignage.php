@@ -25,7 +25,10 @@ class Temoignage
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
-
+    public function __construct()
+    {
+        $this->date = new \DateTime(); 
+    }
     public function getId(): ?int
     {
         return $this->id;

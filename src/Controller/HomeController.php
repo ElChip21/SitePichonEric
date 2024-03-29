@@ -11,13 +11,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Service\ImageService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
     public function index(HomeRepository $homeRepository): Response
     {
-        $latestHome = $homeRepository->findOneBy([], ['id' => 'DESC']);
+        $latestHome = $homeRepository->findOneBy([], ['id' => 'DESC']); // ici on récupère le dernier en base
 
         return $this->render('home/index.html.twig', [
             'latestHome' => $latestHome,
@@ -25,8 +26,14 @@ class HomeController extends AbstractController
     }
 
     #[Route('/home/edit', name: 'app_edit_home')]
-    public function edit(Request $request, Home $home, EntityManagerInterface $entityManager, ImageService $imageService): Response
+   
+    public function edit(Request $request, Home $home, EntityManagerInterface $entityManager, ImageService $imageService,AuthorizationCheckerInterface $authorizationChecker): Response
     {
+
+        if (!$authorizationChecker->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+
+        }
         $form = $this->createForm(HomeType::class, $home);
         $form->handleRequest($request);
 

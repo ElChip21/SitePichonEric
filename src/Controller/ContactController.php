@@ -58,8 +58,8 @@ class ContactController extends AbstractController
 
                 $mailer->send($email);
 
-                // rediriger vers une autre page
-                // return $this->redirectToRoute(/* ... */);
+                
+            return $this->redirectToRoute('app_contact');
             }
             // } else {
             //     $errors = $validator->validate($contact);

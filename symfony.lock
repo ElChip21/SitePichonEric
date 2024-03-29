@@ -59,7 +59,7 @@
         },
         "files": [
             "./assets/app.js",
-            "./assets/styles/ss",
+            "./assets/styles/app.css",
             "./config/packages/asset_mapper.yaml",
             "./importmap.php"
         ]
@@ -307,7 +307,7 @@
         },
         "files": [
             "./assets/app.js",
-            "./assets/styles/app.scss",
+            "./assets/styles/app.css",
             "./config/packages/webpack_encore.yaml",
             "./package.json",
             "./webpack.config.js"
@@ -324,6 +324,9 @@
         "files": [
             "./config/packages/reset_password.yaml"
         ]
+    },
+    "symfonycasts/verify-email-bundle": {
+        "version": "v1.17.0"
     },
     "twig/extra-bundle": {
         "version": "v3.8.0"

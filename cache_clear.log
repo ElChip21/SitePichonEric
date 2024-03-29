@@ -1,0 +1,21 @@
+
+In FileLoader.php line 182:
+                                                                                           
+  There is no extension able to load the configuration for "app.mailAddress" (in "C:\lara  
+  gon\www\Titre_pro_site_Eric_Pichon\titre_pro_afpa/config/services.yaml"). Looked for na  
+  mespace "app.mailAddress", found ""framework", "doctrine", "doctrine_migrations", "debu  
+  g", "twig", "web_profiler", "stimulus", "turbo", "twig_extra", "security", "monolog", "  
+  maker", "webpack_encore", "symfonycasts_reset_password", "easy_admin"" in C:\laragon\ww  
+  w\Titre_pro_site_Eric_Pichon\titre_pro_afpa/config/services.yaml (which is being import  
+  ed from "C:\laragon\www\Titre_pro_site_Eric_Pichon\titre_pro_afpa\src\Kernel.php").      
+                                                                                           
+
+In YamlFileLoader.php line 808:
+                                                                                           
+  There is no extension able to load the configuration for "app.mailAddress" (in "C:\lara  
+  gon\www\Titre_pro_site_Eric_Pichon\titre_pro_afpa/config/services.yaml"). Looked for na  
+  mespace "app.mailAddress", found ""framework", "doctrine", "doctrine_migrations", "debu  
+  g", "twig", "web_profiler", "stimulus", "turbo", "twig_extra", "security", "monolog", "  
+  maker", "webpack_encore", "symfonycasts_reset_password", "easy_admin"".                  
+                                                                                           
+

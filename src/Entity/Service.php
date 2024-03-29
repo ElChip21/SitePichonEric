@@ -34,6 +34,9 @@ class Service
     #[ORM\ManyToMany(targetEntity: Devis::class, mappedBy: 'service')]
     private Collection $devis;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
     public function __construct()
     {
         $this->temoignages = new ArrayCollection();
@@ -153,5 +156,17 @@ class Service
     public function __toString(): string
     {
         return $this->titre; 
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
+
+        return $this;
     }
 }

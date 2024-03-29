@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Service;
 use App\Form\ServiceType;
 use App\Repository\ServiceRepository;
+use App\Service\ImageService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,22 +24,35 @@ class ServiceController extends AbstractController
     }
 
     #[Route('/new', name: 'app_service_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, ImageService $imageService): Response
     {
         $service = new Service();
         $form = $this->createForm(ServiceType::class, $service);
         $form->handleRequest($request);
-
+    
         if ($form->isSubmitted() && $form->isValid()) {
+          
+            $fileName = $imageService->copyImage("image", $this->getParameter("service_image_directory"), $form);
+            $service->setImage($fileName);
             $entityManager->persist($service);
             $entityManager->flush();
-
-            return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);
+    
+    
+            $this->addFlash(
+                'success',
+                'Votre Service a bien été ajouté'
+            );
+    
+            
+            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+         
         }
-
+    
+       
+    
         return $this->render('service/new.html.twig', [
             'service' => $service,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 

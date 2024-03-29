@@ -1,43 +1,51 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand ms-3" href="{{path('app_home')}}">Home</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+<div style="margin-left: 13rem;">
+  <h1 class="text-center"><a class="navbar-brand ms-3" href="{{ path('app_home') }}">Eric Pichon</a></h1>
+  <p class="text-center">chef de choeur<br>Musicien independant</p>
+  </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
+
   </button>
 
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="">Présentation</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="">Mon panier</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="">Contact</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="">Products</a>
-      </li>
-      {% if is_granted('ROLE_USER') %}
+    <ul class="navbar-nav mr-auto pe-5">
         <li class="nav-item">
-          <a class="nav-link" href="">Profile</a>
+            <a class="nav-link" href="#">Présentation</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Mes compétences
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% for rubrique in rubriques %}
+                    <a class="dropdown-item" href="#">{{ rubrique.name }}</a>
+                {% endfor %}
+            </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Déconnexion</a>
+            <a class="nav-link" href="{{path('app_contact')}}">Contact</a>
         </li>
-      {% else %}
+        
         <li class="nav-item">
-          <a class="nav-link" href="">Se connecter</a>
+            <a class="nav-link" href="#">devis</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="">S'inscrire</a>
-        </li>
-
-      {% endif %}
+    
+        {% if is_granted('ROLE_USER') %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_register') }}">S'inscrire</a>
+            </li>
+        {% endif %}
     </ul>
-    <form action="" class="form-inline my-2 my-lg-0 d-flex">
-      <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0 m-3" type="submit">Search</button>
-    </form>
-  </div>
+</div>
+
 </nav>
+
+

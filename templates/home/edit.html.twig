@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une rubrique{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Modifier une rubrique</div>
+
+                    <div class="card-body">
+                        {{ include('home/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+                    </div>
+                </div>
+                <a href="{{ path('app_home') }}" class="btn btn-secondary mt-3">Retour à la liste</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 0;
+            border-color: #ced4da;
+        }
+
+        .btn-secondary {
+            border-radius: 0;
+        }
+
+        /* Styliser l'input file */
+        .custom-file-input::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+        .custom-file-input::before {
+            content: 'Choisir un fichier';
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            border-radius: 3px;
+            padding: 5px 10px;
+            outline: none;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .custom-file-input:hover::before {
+            background: #0056b3;
+        }
+        .custom-file-input:active::before {
+            background: #004eaa;
+        }
+
+        /*textarea */
+        .form-control-textarea {
+            height: 150px;
+            resize: vertical;
+        }
+    </style>
+{% endblock %}

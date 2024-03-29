@@ -24,6 +24,9 @@ class Rubrique
     #[ORM\OneToMany(targetEntity: Service::class, mappedBy: 'rubrique')]
     private Collection $services;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
     public function __construct()
     {
         $this->services = new ArrayCollection();
@@ -92,5 +95,17 @@ class Rubrique
     public function __toString(): string
     {
         return $this->name; 
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
+
+        return $this;
     }
 }

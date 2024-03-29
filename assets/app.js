@@ -7,4 +7,15 @@ import './bootstrap.js';
  */
 import './styles/app.scss';
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+import $ from 'jquery'; // Importez jQuery
+
+
+$(document).ready(function() {
+    $('.nav-item.dropdown').hover(function() {
+      $(this).addClass('show');
+      $(this).find('.dropdown-menu').addClass('show');
+    }, function() {
+      $(this).removeClass('show');
+      $(this).find('.dropdown-menu').removeClass('show');
+    });
+  });

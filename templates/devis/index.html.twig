@@ -1,20 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DevisController!{% endblock %}
+{% block title %}Demande de devis
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<h4>Demande de devis</h4>
+	<div class="container">
+		{{ form_start(form) }}
+		<div class="form-group">
+			{{ form_label(form.FirstName, 'Prénom') }}
+			{{ form_widget(form.FirstName, {'attr': {'class': 'form-control'}}) }}
+			{{ form_errors(form.FirstName) }}
+		</div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+		<div class="form-group">
+			{{ form_label(form.LastName, 'Nom') }}
+			{{ form_widget(form.LastName, {'attr': {'class': 'form-control'}}) }}
+			{{ form_errors(form.LastName) }}
+		</div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/laragon/www/Titre_pro_site_Eric_Pichon/titre_pro_afpa/src/Controller/DevisController.php</code></li>
-        <li>Your template at <code>C:/laragon/www/Titre_pro_site_Eric_Pichon/titre_pro_afpa/templates/devis/index.html.twig</code></li>
-    </ul>
-</div>
+		<div class="form-group">
+			{{ form_label(form.email, 'Email') }}
+			{{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+			{{ form_errors(form.email) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(form.service, 'Service') }}
+			{{ form_widget(form.service, {'attr': {'class': 'form-control'}}) }}
+			{{ form_errors(form.service) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(form.message, 'Message') }}
+			{{ form_widget(form.message, {'attr': {'class': 'form-control'}}) }}
+			{{ form_errors(form.message) }}
+		</div>
+		<div class="mt-4">
+			<button type="submit" class="btn btn-primary">Envoyer</button>
+		</div>
+		{{ form_end(form) }}
+	</div>
 {% endblock %}

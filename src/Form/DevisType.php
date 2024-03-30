@@ -6,6 +6,7 @@ use App\Entity\Devis;
 use App\Entity\Service;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,16 +18,15 @@ class DevisType extends AbstractType
             ->add('FirstName')
             ->add('LastName')
             ->add('email')
-            ->add('message')
-            ->add('date', null, [
-                'widget' => 'single_text',
-            ])
             ->add('service', EntityType::class, [
                 'class' => Service::class,
-                'choice_label' => 'id',
+                'choice_label' => 'titre',
                 'multiple' => true,
             ])
-        ;
+
+            ->add('message');
+           
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

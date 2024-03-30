@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        .devis-info {
+            margin-bottom: 20px;
+        }
+        .devis-info p {
+            margin: 5px 0;
+        }
+        .devis-details {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .devis-details th,
+        .devis-details td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .devis-details th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Devis</h1>
+        <div class="devis-info">
+            <p><strong>Nom:</strong> {{ devis.FirstName }} {{ devis.LastName }}</p>
+            <p><strong>Email:</strong> {{ devis.email }}</p>
+            <p><strong>Date:</strong> {{ 'now'|date('d/m/Y') }}</p>
+        </div>
+        <table class="devis-details">
+            <thead>
+                <tr>
+                    <th>Service</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for service in devis.service %}
+                <tr>
+                    <td>{{ service.titre }}</td>
+                    <td>{{ devis.message }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

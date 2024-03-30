@@ -1,0 +1,28 @@
+{% block subject %}Votre devis{% endblock %}
+
+{% block body %}
+    <p>Bonjour {{ devis.FirstName }} {{ devis.LastName }},</p>
+
+    <p>Devis</p>
+
+    <p>Voici un résumé de votre demande :</p>
+    <ul>
+        <li>Prénom : {{ devis.FirstName }}</li>
+        <li>Nom : {{ devis.LastName }}</li>
+        <li>E-mail : {{ devis.email }}</li>
+        <li>Services demandés :
+            <ul>
+                {% for service in devis.service %}
+                    <li>{{ service.titre }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li>Message : {{ devis.message }}</li>
+        <li>Date : {{ devis.date|date('d/m/Y H:i:s') }}</li>
+    </ul>
+
+    <p>N'hésitez pas à nous contacter pour toute question supplémentaire.</p>
+
+    <p>Cordialement,</p>
+    <p>L'équipe de votre entreprise</p>
+{% endblock %}

@@ -13,16 +13,21 @@
 	<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto pe-5">
 			<li class="nav-item">
-				<a class="nav-link" href="#">Présentation</a>
+				<a class="nav-link" href="{{path('app_presentation')}}">A propos de moi</a>
+			</li>
+            <li class="nav-item">
+				<a class="nav-link" href="{{path('app_presentation')}}">Cours particulier</a>
 			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-					Mes compétences
+					Autre
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					{% for rubrique in rubriques %}
-						<a class="dropdown-item" href="#">{{ rubrique.name }}</a>
+						<a class="dropdown-item" href="{{ path('app_service_show', {'id': rubrique.id}) }}">{{ rubrique.name }}</a>
 					{% endfor %}
+
+
 				</div>
 			</li>
 			<li class="nav-item">
@@ -45,7 +50,7 @@
 					<a class="nav-link" href="{{ path('app_register') }}">S'inscrire</a>
 				</li>
 			{% endif %}
-			
+
 		</ul>
 	</div>
 

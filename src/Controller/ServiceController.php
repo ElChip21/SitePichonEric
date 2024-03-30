@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Rubrique;
 use App\Entity\Service;
 use App\Form\ServiceType;
 use App\Repository\ServiceRepository;
@@ -57,11 +58,15 @@ class ServiceController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_service_show', methods: ['GET'])]
-    public function show(Service $service): Response
+    public function show(Service $service, ServiceRepository $serviceRepository, Rubrique $rubrique): Response
     {
+        $services = $rubrique->getServices();
+        
         return $this->render('service/show.html.twig', [
-            'service' => $service,
+            'rubrique' => $rubrique,
+            'services' => $services,
         ]);
+
     }
 
     #[Route('/{id}/edit', name: 'app_service_edit', methods: ['GET', 'POST'])]

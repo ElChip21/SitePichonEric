@@ -5,6 +5,9 @@
 {% block body %}
     <h1>Service</h1>
 
+
+{% for service in services %}
+    
     <table class="table">
         <tbody>
             <tr>
@@ -25,10 +28,8 @@
             </tr>
         </tbody>
     </table>
+{% endfor %}
 
-    <a href="{{ path('app_service_index') }}">back to list</a>
 
-    <a href="{{ path('app_service_edit', {'id': service.id}) }}">edit</a>
-
-    {{ include('service/_delete_form.html.twig') }}
+   
 {% endblock %}

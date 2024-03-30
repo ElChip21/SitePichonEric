@@ -1,35 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Service{% endblock %}
+{% block title %}Service
+{% endblock %}
 
 {% block body %}
-    <h1>Service</h1>
+
+	<h1>{{ services[0].rubrique.name }}</h1>
 
 
-{% for service in services %}
-    
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ service.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ service.titre }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ service.description }}</td>
-            </tr>
-            <tr>
-                <th>Tarif</th>
-                <td>{{ service.tarif }}</td>
-            </tr>
-        </tbody>
-    </table>
-{% endfor %}
+	{% for service in services %}
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ service.id }}</td>
+				</tr>
+				<tr>
+					<th>Titre</th>
+					<td>{{ service.titre }}</td>
+				</tr>
+				<tr>
+					<th>Description</th>
+					<td>{{ service.description }}</td>
+				</tr>
+				<tr>
+					<th>Tarif</th>
+					<td>{{ service.tarif }}</td>
+				</tr>
+			</tbody>
+		</table>
+	{% endfor %}
 
 
-   
 {% endblock %}

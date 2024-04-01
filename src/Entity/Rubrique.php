@@ -27,9 +27,12 @@ class Rubrique
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+   
+
     public function __construct()
     {
         $this->services = new ArrayCollection();
+        $this->devis = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -108,4 +111,7 @@ class Rubrique
 
         return $this;
     }
+
+   
+
 }

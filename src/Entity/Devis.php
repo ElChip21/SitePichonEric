@@ -34,6 +34,8 @@ class Devis
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
+   
+
     public function __construct()
     {
         $this->service = new ArrayCollection();
@@ -127,4 +129,6 @@ class Devis
 
         return $this;
     }
+
+   
 }

@@ -1,0 +1,6 @@
+
+{# Définir un bloc pour inclure le contenu spécifique #}
+{% block body %}
+    {# Inclure dynamiquement le template spécifique en fonction du nom passé #}
+    {% include 'service/' ~ templateName ~ '.html.twig' %}
+{% endblock %}

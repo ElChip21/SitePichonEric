@@ -62,9 +62,10 @@ class ServiceController extends AbstractController
     {
         $services = $rubrique->getServices();
         
-        return $this->render('service/show.html.twig', [
+        return $this->render('service/template.html.twig', [
             'rubrique' => $rubrique,
             'services' => $services,
+            'templateName' => $service->getTemplateName(), // ici on donne le nom du template à générer
         ]);
 
     }

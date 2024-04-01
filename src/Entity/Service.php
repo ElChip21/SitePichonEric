@@ -37,6 +37,9 @@ class Service
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $type = null;
+
     public function __construct()
     {
         $this->temoignages = new ArrayCollection();
@@ -155,7 +158,7 @@ class Service
 
     public function __toString(): string
     {
-        return $this->titre; 
+        return $this->titre;
     }
 
     public function getImage(): ?string
@@ -169,4 +172,35 @@ class Service
 
         return $this;
     }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): static
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+
+
+    public function getTemplateName(): string
+    {
+        // Retourne le nom du template en fonction du type de service
+        switch ($this->getType()) {
+            case 'Cours particulier':
+                return 'showCoursParticulier';
+            case 'Ecriture':
+                return 'showEcriture';
+            case 'Traduction':
+                return 'showTraduction';
+            
+            default:
+                return 'service/show'; // Fallback au cas où le type de service n'est pas défini
+        }
+    }
+
 }

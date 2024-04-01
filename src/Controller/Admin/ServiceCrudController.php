@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Service;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
@@ -31,6 +32,14 @@ class ServiceCrudController extends AbstractCrudController
             TextField::new('titre'),
             TextEditorField::new('description'),
             NumberField::new('tarif')->setLabel('Tarif (€)'),
+            ChoiceField::new('type')
+                ->setLabel('Type')
+                ->setChoices([
+                    'Cours particulier' => 'Cours particulier',
+                    'Ecriture' => 'Ecriture',
+                    'Traduction' => 'Traduction',
+                    
+                ]),
         ];
     }
 }

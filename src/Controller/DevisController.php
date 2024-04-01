@@ -20,7 +20,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class DevisController extends AbstractController
 {
     #[Route('/devis', name: 'app_devis')]
-    #[Route('/devis', name: 'app_devis')]
+    
 public function index(
     Request $request,
     EntityManagerInterface $entityManager,
@@ -54,7 +54,7 @@ public function index(
             ->context([
                 'devis' => $devis,
             ])
-            ->attach($pdfContent, sprintf('devis-' . $DevisNumber . 'EricPichon.pdf', date("Y-m-d")), 'application/pdf');
+            ->attach($pdfContent, sprintf('devis-%s-EricPichon.pdf', $DevisNumber), 'application/pdf');
 
         $mailer->send($email);
 

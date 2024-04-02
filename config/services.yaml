@@ -11,6 +11,7 @@ parameters:
     rubrique_image_directory: '%kernel.project_dir%/public/uploads/rubriques'
     service_image_directory: '%kernel.project_dir%/public/uploads/services'
     avatar_directory: '%kernel.project_dir%/public/uploads/avatar'
+    image_presentation: '%kernel.project_dir%/public/uploads/presentations'
     app.mailAddress: '%env(MAIL_ADDRESS)%'
 
 services:

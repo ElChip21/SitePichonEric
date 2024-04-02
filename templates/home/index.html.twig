@@ -10,9 +10,11 @@
 </head>
 <body>
 	
-
-	    <div class="jumbotron" style="background-image: url('{{ asset('/uploads/home/' ~ latestHome.image) }}'); background-size: 75% auto; background-position: center; background-repeat: no-repeat; color: white; text-align: center; padding: 200px 0; margin-right: 10%;">
-
+{% if latestHome %}
+	    <div class="mt-5" style="background-image: url('{{ asset('/uploads/home/' ~ latestHome.image) }}'); background-size: 75% auto; background-position: center; background-repeat: no-repeat; color: white; text-align: center; padding: 200px 0; margin-right: 10%;">
+{% else %}
+    <p>No image available</p>
+{% endif %}
 	</div>
 
 	{% if is_granted('ROLE_ADMIN') %}

@@ -1,40 +1,52 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Services de
-	{{ services[0].rubrique.name }}
+    Services de
+    {{ services[0].rubrique.name }}
 {% endblock %}
 
 {% block body %}
-	<div class="text-center">
-		<h1>{{ services[0].rubrique.name }}</h1>
-		<p class="size mb-4">ECRITURE</p>
-	</div>
 
-	<div class="row justify-content-center">
-		{% for service in services %}
-			<div class="col-lg-4 mb-4">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">{{ service.titre|raw }}</h5>
-						<p class="card-text">{{ service.description|raw }}</p>
-					</div>
-				</div>
-			</div>
-			{% if loop.index % 3 == 0 %}
-			</div>
-			<div class="row justify-content-center">
-			{% endif %}
-		{% endfor %}
-	</div>
+    <div class=" text-center pt-10 mb-5">
+        <h1>{{ services[0].rubrique.name }}</h1>
+     
+    </div>
 
-	<style>
-		.size {
-			font-size: 1.5rem;
+    <div class="container-fluid d-flex flex-column justify-content-center">
+        <div class="row">
+            {% for service in services %}
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <img src="{{ asset('/uploads/services/' ~ service.image) }}" class="rounded-circle mb-5" alt="{{ service.titre }}" style="width: 200px; height: 200px; object-fit: cover;">
+                            <h5 class="card-title text-center">{{ service.titre|raw }}</h5>
+                            <p class="card-text">{{ service.description|raw }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
 
-		}
-	.card{
-        border: none;
-    }
-	</style>
+			<a class="text-center" href="{{path('app_devis')}}">Cliquez ici pour demander un devis</a>
+        </div>
+    </div>
+
+
+    <style>
+	a{
+
+		color: black;
+	}
+        .size {
+            font-size: 1.5rem;
+        }
+
+        .card {
+            border: none;
+        }
+
+.pt-10{
+	padding-top: 120px
+}
+  
+    </style>
 {% endblock %}

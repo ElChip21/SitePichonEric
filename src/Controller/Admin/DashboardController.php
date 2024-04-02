@@ -2,8 +2,10 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Admin;
 use App\Entity\Contact;
 use App\Entity\Devis;
+use App\Entity\Presentation;
 use App\Entity\Rubrique;
 use App\Entity\Service;
 use App\Entity\Temoignage;
@@ -52,6 +54,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Mes contacts', 'fas fa-list', Contact::class);
         yield MenuItem::linkToCrud('Mes Témoignages', 'fas fa-list', Temoignage::class);
         yield MenuItem::linkToCrud('Devis', 'fas fa-list', Devis::class);
+        yield MenuItem::linkToCrud('Presentation', 'fas fa-list', Presentation::class);
+        yield MenuItem::linkToCrud('Admin', 'fas fa-list', Admin::class);
+
+
 
     }
 }

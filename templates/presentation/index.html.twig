@@ -1,61 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PresentationController!{% endblock %}
+{% block title %}
+    Hello PresentationController!
+{% endblock %}
 
 {% block body %}
-
-
-<div class="contenu-image">
-    <img src="image-eric-pichon.jpg" alt="Eric Pichon">
-    <div class="texte-image">
-      <h2>Eric Pichon</h2>
-      <p>Pédagogue et passionné, j'ai été initialement formé à la culture anglophone, et j'ai séjourné pendant huit ans au Royaume-Uni. De retour en France, je décide changer de vie pour me consacrer à la musique. Depuis 2015 je suis professeur de Formation Musicale à l'Ecole de Musique de Mougins.</p>
-      <p>J'ai chanté dans différents ensembles, et sous la direction de chefs comme Alain Joutard, Nadine Kasapyan et Florence Daly.</p>
-      <p>Je me suis formé depuis 2009, en obtenant une Licence de Musicologie à l'Université de Nice en 2012, puis 3 DEM au CRD de Cannes, en Composition, en Ecriture sous la direction de Mary bel Dessagnes, puis en Direction de Chœur avec Florence Daly, dont je deviens devient l'assistant en 2021.</p>
-      <p>J'ai dirigé plusieurs ensembles, notamment le chœur adulte du Conservatoire de Cannes, et Unisson@alrose de Nice en codirection avec Evelyne Dubosq.</p>
-      <p>Depuis 2021 je dirige le chœur Arioso de Peymeinade et je donne régulièrement des cours en coaching vocal.</p>
-      <p>Je compose des œuvres originales, j'écris des arrangements visant un but pédagogique, pour les choristes, ou à la demande de certains chefs de chœur.</p>
+    <div class="contenu-image">
+        <div class="d-flex align-items-start">
+            <div class="">
+                <img src="{{ asset('/uploads/presentations/' ~ latestPresentation.image) }}" class="" alt="{{ latestPresentation.name }}" style="width: 150px; height: 150px; object-fit: cover;">
+            </div>
+            <div>
+                <div class="texte-image">
+                    <h2>{{ latestPresentation.name }}</h2>
+                    <p style="font-size: 20px;">{{ latestPresentation.presentation|raw }}</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
+    <style>
+        .contenu-image {
+            margin: 20px auto;
+            max-width: 950px;
+        }
 
+        .texte-image {
+            padding-left: 50px;
+            background-color: white;
+            border-radius: 10px;
+            text-align: justify;
+        }
 
-  <style>
+        .texte-image h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
 
-
-.contenu-image {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 20px auto;
-  max-width: 800px;
-}
-
-.contenu-image img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 10px;
-}
-
-.texte-image {
-  margin: 20px;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  text-align: justify;
-}
-
-.texte-image h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.texte-image p {
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-
-  </style>
+        .texte-image p {
+            font-size: 100px;
+            line-height: 1.5;
+        }
+    </style>
 {% endblock %}

@@ -23,15 +23,21 @@
 		{# avoir ma nav sur toutes mes pages #}
 		{{ render(controller('App\\Controller\\NavController::index')) }}
 
-		<div class="container-fluid">
+		<div class="container-fluid vh-100">
 			{% include "flash.html.twig" %}
 			{# Placé en dehors du bloc body #}
 
 			{% block body %}
 				{# Contenu spécifique à chaque page #}
 			{% endblock %}
+
+
 		</div>
 
 	</body>
-
+<footer class="">
+    {% block footer %}
+        {% include "footer.html.twig" %}
+    {% endblock %}
+</footer>
 </html>

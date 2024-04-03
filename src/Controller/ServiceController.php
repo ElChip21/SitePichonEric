@@ -58,18 +58,20 @@ class ServiceController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_service_show', methods: ['GET'])]
-    public function show(Service $service, ServiceRepository $serviceRepository, Rubrique $rubrique): Response
+    public function show(ServiceRepository $serviceRepository, Rubrique $rubrique): Response
     {
+        // Récupérer les services associés à la rubrique spécifique
         $services = $rubrique->getServices();
+        
+        // Déterminer le template à utiliser pour l'affichage
+        $templateName = $services->count() > 0 ? $services[0]->getTemplateName() : 'show';
         
         return $this->render('service/template.html.twig', [
             'rubrique' => $rubrique,
             'services' => $services,
-            'templateName' => $service->getTemplateName(), // ici on donne le nom du template à générer
+            'templateName' => $templateName,
         ]);
-
     }
-
     #[Route('/{id}/edit', name: 'app_service_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Service $service, EntityManagerInterface $entityManager): Response
     {

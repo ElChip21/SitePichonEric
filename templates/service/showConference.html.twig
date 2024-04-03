@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Services de
+	{{ services[0].rubrique.name }}
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row justify-content-center align-items-center">
+			{% for service in services %}
+				<div
+					class="col-lg-6 col-md-6 mb-4 text-center">
+					<!-- Ajout de la classe text-center -->
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title display-6 ">{{ service.titre|raw }}</h5>
+							<div class="card-text size">{{ service.description|raw }}</div>
+						</div>
+					</div>
+				</div>
+				<div
+					class="col-lg-6 col-md-6 mb-4 text-center">
+					<!-- Ajout de la classe text-center -->
+					<div class="half-screen-image" style="background-image: url('{{ asset('/uploads/services/' ~ service.image) }}');"></div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="row justify-content-center">
+			<div
+				class="col-lg-6 col-md-6 text-center">
+				<!-- Ajout de la classe text-center -->
+				<a href="{{ path('app_devis') }}" class="text-center">Cliquez ici pour demander un devis</a>
+			</div>
+		</div>
+	</div>
+
+	<style>
+
+		.card {
+			border: none;
+		}
+		a {
+			color: black;
+		}
+		.size {
+			font-size: x-large !important;
+		}
+		.half-screen-image {
+			width: 50vw; /* 50% de la largeur de l'écran */
+			height: 100vh; /* 50% de la hauteur de l'écran */
+			background-size: cover;
+			background-position: center;
+		}
+	</style>
+{% endblock %}

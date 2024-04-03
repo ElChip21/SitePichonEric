@@ -32,14 +32,7 @@ class ServiceCrudController extends AbstractCrudController
             TextField::new('titre'),
             TextEditorField::new('description'),
             NumberField::new('tarif')->setLabel('Tarif (€)'),
-            ChoiceField::new('type')
-                ->setLabel('Type')
-                ->setChoices([
-                    'Cours particulier' => 'Cours particulier',
-                    'Ecriture' => 'Ecriture',
-                    'Traduction' => 'Traduction',
-                    
-                ]),
+            
         ];
     }
 }

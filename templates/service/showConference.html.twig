@@ -17,22 +17,22 @@
 							<h5 class="card-title display-6 ">{{ service.titre|raw }}</h5>
 							<div class="card-text size">{{ service.description|raw }}</div>
 						</div>
+
+                        <a href="{{ path('app_devis') }}" class="text-center">Cliquez ici pour demander un devis</a>
 					</div>
 				</div>
 				<div
 					class="col-lg-6 col-md-6 mb-4 text-center">
-					<!-- Ajout de la classe text-center -->
+				
 					<div class="half-screen-image" style="background-image: url('{{ asset('/uploads/services/' ~ service.image) }}');"></div>
 				</div>
+              
+		
+				
+			
 			{% endfor %}
 		</div>
-		<div class="row justify-content-center">
-			<div
-				class="col-lg-6 col-md-6 text-center">
-				<!-- Ajout de la classe text-center -->
-				<a href="{{ path('app_devis') }}" class="text-center">Cliquez ici pour demander un devis</a>
-			</div>
-		</div>
+		
 	</div>
 
 	<style>

@@ -1,40 +1,47 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Services de
-	{{ services[0].rubrique.name }}
+    Services de {{ services[0].rubrique.name }}
 {% endblock %}
 
 {% block body %}
-	<div class="text-center">
-		<h1>{{ services[0].rubrique.name }}</h1>
-		<p class="size mb-4">CHORISTES</p>
-	</div>
+    <div class="container">
+        <div class="text-center mt-5">
+            <h1>{{ services[0].rubrique.name }}</h1>
+            <p class="lead">Découvrez nos services</p>
+        </div>
 
-	<div class="row justify-content-center">
-		{% for service in services %}
-			<div class="col-lg-4 mb-4">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">{{ service.titre|raw }}</h5>
-						<p class="card-text">{{ service.description|raw }}</p>
-					</div>
-				</div>
-			</div>
-			{% if loop.index % 3 == 0 %}
-			</div>
-			<div class="row justify-content-center">
-			{% endif %}
-		{% endfor %}
-	</div>
+        <div class="row justify-content-center mt-5">
+            {% for service in services %}
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ service.titre|raw }}</h5>
+                            <p class="card-text">{{ service.description|raw }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
-	<style>
-		.size {
-			font-size: 1.5rem;
+    <style>
+        /* Styles spécifiques pour cette page */
+        .card {
+            border: none;
+            transition: all 0.3s ease;
+			background-color: white;
+        }
 
-		}
-	.card{
-        border: none;
-    }
-	</style>
+        .card:hover {
+            transform: translateY(-5px);
+			background-color: #444444;
+            color: white; /* Bleu ciel */
+        }
+
+        /* Styles globaux */
+        .size {
+            font-size: 1.5rem;
+        }
+    </style>
 {% endblock %}

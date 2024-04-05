@@ -189,7 +189,7 @@ class Service
             case 'Conférences':
                 return 'showConference';
     
-            case 'Cours particulier':
+            case 'Cours particuliers':
                 return 'showCoursParticulier';
     
             default:
